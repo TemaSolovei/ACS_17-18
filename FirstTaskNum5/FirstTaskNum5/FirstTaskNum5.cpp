@@ -7,19 +7,19 @@
 #include <stdio.h>
 using namespace std;
 
-int maxELement(int* mas)
+int maxELement(int* mas) // Вычисление максимального элемента
 {
 	int maximal = mas[0];
 
 	for (int i = 1; i < 15; i++)
 	{
-		if (mas[i] < maximal) maximal = mas[i];
+		if (mas[i] > maximal) maximal = mas[i];
 	}
 
 	return maximal;
 }
 
-int minELement(int* mas)
+int minELement(int* mas) // Вычисление минимального элемента
 {
 	int minimal = mas[0];
 
@@ -31,7 +31,7 @@ int minELement(int* mas)
 	return minimal;
 }
 
-int* inputMas()
+int* inputMas() // Ввод массива
 {
 	int *mas = new int[15];
 	
@@ -52,9 +52,9 @@ int main()
 	SetConsoleCP(1251);       // Включаем отображение кириллицы
 	SetConsoleOutputCP(1251); // Включаем отображение кириллицы
 
-	int* mas = inputMas();
-	int min = minELement();
-	int max = maxELement();
+	int* mas = inputMas(); // Получение массива
+	int min = minELement(mas); // Вычисление минимального элемента
+	int max = maxELement(mas); // Вычисление максимального элемента
 
 	cout << "Минимальный элемент массива = " << min << endl;
 	cout << "Максимальный элемент массива = " << max << endl;

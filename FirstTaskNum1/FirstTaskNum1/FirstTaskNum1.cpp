@@ -14,43 +14,68 @@ using namespace std;
 int main()
 {
 	setlocale(LC_COLLATE, "rus"); // Вызов функции настройки локали, включаем отображение кириллицы
-	int fact = Input(); // Ввод числа
-	int choice = Choice();
+	int fact = input(); // Ввод числа
+	int factOld = fact; // Введённое число для вывода
+	int choice = choiceMethod();
 
 	switch (choice)
 	{
 	case 1:
+		fact = iteration(fact);
 		break;
 
 	case 2:
+		fact = recursion(fact);
 		break;
 	}
 
+	cout << "Факториал числа " << factOld << " равен " << fact;
     return 0;
 }
 
-int Input()
+int iteration(int num)
+{
+	int result = 1;
+
+	if (num < 0) return 0;
+	else if (num == 0) return 1;
+	else for (int i = 1; i <= num; i++)
+			{ 
+				result *= i;
+			}
+
+	return result;
+}
+
+int recursion(int num)
+{
+	if (num < 0) return 0;
+	else if (num == 0) return 1;
+	else return num*recursion(num - 1);
+}
+
+int input()
 {
 	int num; // Введёное число
 	cout << "Введите число для вычисления факториала: ";
-	num = CheckInt();
+	num = checkInt();
 	cout << endl;
 	return num;
 }
 
-int Choice()
+int choiceMethod()
 {
 	int choice; // Выбранный пункт меню
 	cout << "Как будем вычислять факториал? 1. Итерационнным алгоритмом 2. Рекурсионным алгоритмом" << endl << "Введите выбранный вариант: ";
-	choice = CheckInt();
+	choice = checkInt();
 	cout << endl;
 	return choice;
 }
 
-int CheckInt() // Проверка ввода на int
+int checkInt() // Проверка ввода на int
 {
 	int input;
-	std::cin >> i;
+	std::cin >> input;
 	if (!std::cin)
 	{
 		std::cout << "Введите число!" << std::endl;

@@ -6,14 +6,20 @@
 #include <Windows.h>
 using namespace std;
 
-void iteration(int size)
+/// Напишите программу, которая выводит на экран последовательность чисел Фибоначчи 
+/// (до заданного значения с номером N). Значение N вводится с клавиатуры. 
+/// Разработайте процедуру, реализующую:
+/// а) итерационный алгоритм;
+/// б) рекурсивный алгоритм.
+
+void iteration(int size) // Итерационный алгоритм
 {
 	if (size <= 0) cout << "Длина последовательности меньше или равна 0"; 
 	else if (size == 1) cout << "0"; 
 	else {
 		int first = 1;
 		int second = 0;
-		cout << "0 ";
+		cout << "0 "; // Вывод первого члена последовательности
 
 		for (int i = 1; i < size; i++)
 		{
@@ -26,7 +32,7 @@ void iteration(int size)
 	}
 }
 
-int recursion(int num)
+int recursion(int num) // Рекурсионный алгоритм
 {
 	int fib = 0;
 	if (num < 1) return 0;
@@ -34,7 +40,7 @@ int recursion(int num)
 	return recursion(num - 1) + recursion(num - 2);
 }
 
-int inChoice()
+int inChoice() // Выбор способа вычисления
 {
 	int choice;
 	cout << "Как будем вычислять числа Фибоначчи? 1. Итерационный алгоритм 2. Рекурсивный алгоритм"
@@ -44,7 +50,7 @@ int inChoice()
 	return choice;
 }
 
-int inSize()
+int inSize() // Выбор размера последовательности
 {
 	int size;
 	cout << "Введите длину последовательности из чисел Фибоначчи: ";
